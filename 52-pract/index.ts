@@ -6,7 +6,7 @@ interface IPhone {
 // IMobilePhone должен наследоваться от IPhone,
 // тип свойства companyPartner зависит от свойства company
 
-interface IMobilePhone {
+interface IMobilePhone extends IPhone {
   size: string;
   companyPartner: "same type as company in Phone";
   manufactured: Date;

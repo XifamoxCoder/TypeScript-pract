@@ -1,10 +1,11 @@
-var formElement = document.querySelectorAll('form');
-var titleInput = document.querySelector('#title');
-var emailInput = document.querySelector('#email');
-var textArea = document.querySelector('#text');
-var checkBox = document.querySelector('#checkbox');
-var btnElement = document.querySelectorAll('button');
-var formData = {
+"use strict";
+const formElement = document.querySelectorAll('form');
+const titleInput = document.querySelector('#title');
+const emailInput = document.querySelector('#email');
+const textArea = document.querySelector('#text');
+const checkBox = document.querySelector('#checkbox');
+const btnElement = document.querySelectorAll('button');
+const formData = {
     email: "",
     title: "",
     text: "",
@@ -13,10 +14,10 @@ var formData = {
 addEventListener("submit", function (event) {
     event.preventDefault();
 });
-checkBox === null || checkBox === void 0 ? void 0 : checkBox.addEventListener('change', function (e) {
+checkBox === null || checkBox === void 0 ? void 0 : checkBox.addEventListener('change', (e) => {
     formData.checkbox = checkBox.checked;
 });
-btnElement === null || btnElement === void 0 ? void 0 : btnElement.forEach(function (btnElement) {
+btnElement === null || btnElement === void 0 ? void 0 : btnElement.forEach(btnElement => {
     btnElement.addEventListener("click", function (event) {
         formData.email = emailInput === null || emailInput === void 0 ? void 0 : emailInput.value;
         formData.title = titleInput === null || titleInput === void 0 ? void 0 : titleInput.value;
@@ -47,9 +48,9 @@ function validateFormData(data) {
     }
 }
 function checkFormData(data) {
-    var email = data.email;
-    var emails = ["example@gmail.com", "example@ex.com", "admin@gmail.com", "everylands@gmail.com"];
-    var existEmail = emails.filter(function (e) { return e == email; }).join("");
+    const { email } = data;
+    const emails = ["example@gmail.com", "example@ex.com", "admin@gmail.com", "everylands@gmail.com"];
+    const existEmail = emails.filter((e) => e == email).join("");
     console.log(existEmail);
     if (email === existEmail) {
         console.log("This email is already exist");

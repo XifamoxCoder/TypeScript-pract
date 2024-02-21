@@ -5,10 +5,14 @@ function setName() {
 class Player {
   private static game: string = 'COD'
 
-  private login: string
+  #login: string
   private _password: string
   public server: string
   protected consent: boolean
+
+  constructor(login: string) {
+    this.#login = login
+  }
 
   static {
     Player.game = setName()
@@ -26,34 +30,45 @@ class Player {
   static getGameName() {
     return Player.game
   }
+
+  logIn = () => {
+    return `Player ${this.#login} online!`
+  }
+
+  connect() {
+    // Do something
+    return this
+  }
+
+  isPro(): this is CompetitivePlayer {
+    return this instanceof CompetitivePlayer
+  }
 }
 
-new Player()
-new Player()
+// const test = player.logIn
+// test()
+
 console.log(Player.getGameName())
 
 // Math.random()
 //
-// class CompetitivePlayer extends Player {
-//   rank: number
-//   private isConsented() {
-//     this.consent ? 'Yes' : 'No'
-//   }
-// }
-//
-// const player = new CompetitivePlayer()
-// player._password = '1qaz'
+class CompetitivePlayer extends Player {
+  rank: number
 
-// class User {
-//   public email string
-//   public name: string
-//
-//   constructor(email: string, name: string) {
-//     this.email = email
-//     this.name = name
-//   }
-// }
+  checkLogin() {
+    return this.logIn()
+  }
 
-// class User {
-//   constructor(public email: string, public name: string) {}
-// }
+  private isConsented() {
+    this.consent ? 'Yes' : 'No'
+  }
+}
+
+const player = new Player('test')
+console.log(player.connect().logIn())
+
+const player2 = new CompetitivePlayer('test2')
+console.log(player2.connect().logIn())
+
+const somePlayer: Player | CompetitivePlayer = new CompetitivePlayer('test3')
+somePlayer.isPro() ? console.log(somePlayer) : console.log(somePlayer)

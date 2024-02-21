@@ -1,11 +1,12 @@
-var currRate = "1.05";
-var fetchCurr = function (response) {
-    var data = JSON.parse(response);
+"use strict";
+const currRate = "1.05";
+const fetchCurr = (response) => {
+    const data = JSON.parse(response);
     return data;
 };
 function transferEurToUsd(available, amount, commission) {
     if (available) {
-        var res = fetchCurr(currRate) * amount * commission;
+        let res = fetchCurr(currRate) * amount * commission;
         console.log(res);
         // Или запись в элемент на странице вместо консоли
     }

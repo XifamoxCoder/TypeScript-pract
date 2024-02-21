@@ -59,7 +59,7 @@ function isShip(ship: Vehicle): ship is Ship {
   return "sail" in ship
 }
 
-const car: ComplexVehicle = {
+const car1: ComplexVehicle = {
   name: 'car',
   engine: 'v7'
 }
@@ -89,4 +89,4 @@ function repairVahicle(vehicle: ComplexVehicle) {
   }
 } 
 
-repairVahicle(car)
+repairVahicle(car1)
